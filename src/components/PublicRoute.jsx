@@ -10,7 +10,7 @@ const PublicRoute = ({ children }) => {
 
   useEffect(() => {
     checkAuth();
-  }, [checkAuth]);
+  }, []);
 
   useEffect(() => {
     if (!isAuthenticating && isAuthenticated === "authenticated") {

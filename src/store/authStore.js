@@ -58,7 +58,7 @@ export const useAuthStore = create((set, get) => ({
   logout: async () => {
     try {
       await axiosInstance.post("/auth/logout");
-      set({ user: null });
+      set({ user: null, isAuthenticated: "unAuthenticated", onlineUsers: [] });
       toast.success("Logout successful");
       const selectedUser = useChatStore.getState().selectedUser;
       if (selectedUser) useChatStore.getState().setSelectedUser(null);
@@ -74,7 +74,6 @@ export const useAuthStore = create((set, get) => ({
       set({ user: response.data.user });
       toast.success("Profile updated successfully");
     } catch (error) {
-      set({ user: null });
       console.error(globalError(error));
       toast.error(globalError(error));
     } finally {
