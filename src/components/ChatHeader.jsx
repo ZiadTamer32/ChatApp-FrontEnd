@@ -20,10 +20,7 @@ const ChatHeader = () => {
           </p>
         </div>
       </div>
-      <div
-        className="hidden md:block cursor-pointer"
-        onClick={() => setSelectedUser(null)}
-      >
+      <div className="cursor-pointer" onClick={() => setSelectedUser(null)}>
         <X className="w-6 h-6 transition-colors hover:text-primary" />
       </div>
     </div>

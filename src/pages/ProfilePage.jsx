@@ -16,12 +16,12 @@ const ProfilePage = () => {
   };
 
   return (
-    <div className="p-4 min-h-[calc(100vh-64px)] flex items-center">
-      <div className="bg-base-300 rounded-xl p-4 lg:p-6 grid lg:grid-cols-3 w-full gap-6 lg:gap-0 lg:h-[500px] items-center">
-        <div className="lg:border-r border-zinc-400 h-full flex flex-col gap-4 justify-center items-center">
+    <div className="min-h-[calc(100vh-64px)] grid grid-cols-1 md:grid-cols-3 bg-base-300">
+      <div className="md:border-r border-zinc-400">
+        <div className="flex flex-col justify-center h-full gap-4">
           {/* Title */}
           <div className="text-center">
-            <h1 className="text-2xl font-semibold ">Profile</h1>
+            <h1 className="text-2xl font-semibold">Profile</h1>
             <p className="mt-2">Your profile information</p>
           </div>
           {/* Avatar */}
@@ -55,40 +55,40 @@ const ProfilePage = () => {
             </p>
           </div>
         </div>
-        {/* Form Data */}
-        <div className="lg:border-r border-zinc-400 h-full flex flex-col justify-center items-center gap-4 px-4">
-          <div className="space-y-1.5 w-full">
-            <div className="text-sm flex items-center gap-2">
-              <User className="w-4 h-4" />
-              Full Name
-            </div>
-            <p className="px-4 py-2.5 bg-base-200 rounded-lg">
-              {user?.fullName || "John Doe"}
-            </p>
-          </div>
+      </div>
 
-          <div className="space-y-1.5 w-full">
-            <div className="text-sm flex items-center gap-2">
-              <Mail className="w-4 h-4" />
-              Email Address
-            </div>
-            <p className="px-4 py-2.5 bg-base-200 rounded-lg">
-              {user?.email || "you@example.com"}
-            </p>
+      {/* Form Data */}
+      <div className="md:border-r border-zinc-400 flex flex-col justify-center items-center gap-4 px-4">
+        <div className="space-y-1.5 w-full">
+          <div className="text-sm flex items-center gap-2">
+            <User className="w-4 h-4" />
+            Full Name
           </div>
+          <p className="px-4 py-2.5 bg-base-200 rounded-lg">
+            {user?.fullName || "John Doe"}
+          </p>
         </div>
-        {/* Details */}
-        <div className="px-4">
-          <h2 className="text-lg font-medium mb-4">Account Information</h2>
-          <div className="space-y-3 text-sm">
-            <div className="flex items-center justify-between py-2 border-b border-zinc-700">
-              <span>Member Since</span>
-              <span>{user?.createdAt?.split("T")[0]}</span>
-            </div>
-            <div className="flex items-center justify-between py-2">
-              <span>Account Status</span>
-              <span className="text-green-500">Active</span>
-            </div>
+        <div className="space-y-1.5 w-full">
+          <div className="text-sm flex items-center gap-2">
+            <Mail className="w-4 h-4" />
+            Email
+          </div>
+          <p className="px-4 py-2.5 bg-base-200 rounded-lg">
+            {user?.email || "John Doe"}
+          </p>
+        </div>
+      </div>
+      {/* Details */}
+      <div className="flex flex-col justify-center px-4">
+        <h2 className="text-lg font-medium mb-4">Account Information</h2>
+        <div className="space-y-3 text-sm">
+          <div className="flex items-center justify-between py-2 border-b border-zinc-400">
+            <span>Member Since</span>
+            <span>{user?.createdAt?.split("T")[0]}</span>
+          </div>
+          <div className="flex items-center justify-between py-2">
+            <span>Account Status</span>
+            <span className="text-green-500">Active</span>
           </div>
         </div>
       </div>

@@ -17,7 +17,7 @@ const MessageList = () => {
 
   if (!messages || messages.length === 0) {
     return (
-      <p className="text-center text-zinc-500 flex-1 flex items-center justify-center">
+      <p className="text-center text-zinc-400 flex-1 flex items-center justify-center">
         No messages yet
       </p>
     );

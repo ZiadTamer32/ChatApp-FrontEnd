@@ -1,14 +1,15 @@
 import { X, Image, Send, Loader2 } from "lucide-react";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useChatStore } from "../store/chatStore";
 import toast from "react-hot-toast";
 import { globalError } from "../lib/constants";
 
 const MessageInput = () => {
   const [message, setMessage] = useState("");
-  const [imagePreview, setImagePreview] = useState("");
+  const [imagePreview, setImagePreview] = useState(null);
   const { sendMessage, isSendingMessage } = useChatStore();
   const imgRef = useRef(null);
+  const inputRef = useRef(null);
 
   const handleRemoveImage = () => {
     setImagePreview(null);
@@ -39,6 +40,22 @@ const MessageInput = () => {
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      handleSubmit(e);
+    }
+  };
+
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.style.height = "auto";
+      inputRef.current.style.height = `${inputRef.current.scrollHeight}px`;
+      inputRef.current.style.overflowY =
+        inputRef.current.scrollHeight > 160 ? "auto" : "hidden";
+    }
+  }, [message]);
+
   return (
     <div className="w-full p-4">
       {imagePreview && (
@@ -61,13 +78,16 @@ const MessageInput = () => {
       {/* Form */}
       <form className="flex items-center gap-2" onSubmit={handleSubmit}>
         <div className="flex-1">
-          <input
+          <textarea
             placeholder="Type a message..."
             autoFocus
             value={message}
             onChange={(e) => setMessage(e.target.value)}
+            onKeyDown={handleKeyDown}
             type="text"
-            className="w-full p-2 border border-primary/50 bg-transparent rounded-lg focus:outline-none"
+            className="resize-none overflow-y-auto max-h-40 w-full p-2 border border-primary/50 bg-transparent rounded-lg focus:outline-none"
+            ref={inputRef}
+            rows="1"
           />
         </div>
         <div>
@@ -78,6 +98,7 @@ const MessageInput = () => {
             onChange={handleImageChange}
           />
           <button
+            aria-label="Upload image"
             className="p-2 rounded-full bg-primary/10 hover:bg-primary/30 transition-colors"
             type="button"
             onClick={() => imgRef.current.click()}
@@ -87,6 +108,7 @@ const MessageInput = () => {
         </div>
         <div>
           <button
+            aria-label="Send message"
             className="p-2 rounded-full bg-primary/10 hover:bg-primary/30 transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
             type="submit"
             disabled={(!message.trim() && !imagePreview) || isSendingMessage}
