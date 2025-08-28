@@ -55,10 +55,10 @@ const LoginPage = () => {
           {/* Form */}
           <form className="space-y-5 sm:space-y-6" onSubmit={handleSubmit}>
             <label className="input input-bordered flex items-center gap-2">
-              <Mail className="h-4 w-4 opacity-70" />
+              <Mail className="h-4 w-4 opacity-70 shrink-0" />
               <input
                 type="email"
-                className="grow text-sm sm:text-base"
+                className="flex-1 text-sm sm:text-base"
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -66,10 +66,10 @@ const LoginPage = () => {
             </label>
 
             <label className="input input-bordered flex items-center gap-2 relative">
-              <Lock className="h-4 w-4 opacity-70" />
+              <Lock className="h-4 w-4 opacity-70 shrink-0" />
               <input
                 type={showPassword ? "text" : "password"}
-                className="grow text-sm sm:text-base pr-10"
+                className="flex-1 text-sm sm:text-base pr-10"
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}

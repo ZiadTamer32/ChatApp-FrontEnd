@@ -36,7 +36,7 @@ const SignupPage = () => {
   }, [user, navigate]);
 
   return (
-    <div className="grid lg:grid-cols-2 min-h-screen">
+    <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
       {/* Left Side */}
       <div className="flex flex-col items-center justify-center p-4 sm:p-6">
         <div className="w-full max-w-sm sm:max-w-md bg-primary/10 rounded-xl p-6 sm:p-8 shadow-lg">
@@ -61,10 +61,10 @@ const SignupPage = () => {
           {/* Form */}
           <form className="space-y-5 sm:space-y-6" onSubmit={handleSubmit}>
             <label className="input input-bordered flex items-center gap-2">
-              <Mail className="h-4 w-4 opacity-70" />
+              <Mail className="h-4 w-4 opacity-70 shrink-0" />
               <input
                 type="email"
-                className="grow text-sm sm:text-base"
+                className="flex-1 text-sm sm:text-base"
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -72,10 +72,10 @@ const SignupPage = () => {
             </label>
 
             <label className="input input-bordered flex items-center gap-2">
-              <User className="h-4 w-4 opacity-70" />
+              <User className="h-4 w-4 opacity-70 shrink-0" />
               <input
                 type="text"
-                className="grow text-sm sm:text-base"
+                className="flex-1 text-sm sm:text-base"
                 placeholder="Full Name"
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
@@ -83,10 +83,10 @@ const SignupPage = () => {
             </label>
 
             <label className="input input-bordered flex items-center gap-2 relative">
-              <Lock className="h-4 w-4 opacity-70" />
+              <Lock className="h-4 w-4 opacity-70 shrink-0" />
               <input
                 type={showPassword ? "text" : "password"}
-                className="grow text-sm sm:text-base pr-10"
+                className="flex-1 text-sm sm:text-base pr-10"
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
