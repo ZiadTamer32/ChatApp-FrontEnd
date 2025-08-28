@@ -19,7 +19,6 @@ export const useChatStore = create((set, get) => ({
       set({ users: response.data.users });
     } catch (error) {
       console.error(globalError(error));
-      toast.error(globalError(error));
     } finally {
       set({ isUsersLoading: false });
     }
